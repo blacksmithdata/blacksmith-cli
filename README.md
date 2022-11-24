@@ -1,2 +1,2 @@
-# blacksmith
-blacksmith cli test
+# Blacksmith Platform
+### blacksmith-cli
