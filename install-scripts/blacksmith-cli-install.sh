@@ -17,7 +17,7 @@ localAppFolder=/usr/local
 blacksmithAppBin=/usr/local/bin/blacksmith-cli
 blacksmithAppFolder=/usr/local/blacksmith
 urlTag=v$tag
-url=https://github.com/synthphonic/blacksmith-cli/archive/refs/tags/$urlTag
+url=https://github.com/blacksmithdata/blacksmith-cli/archive/refs/tags/$urlTag
 platform=osx-x64
 downloadFolder=~/Downloads
 fullUrl=$url"/"v$latestVersion.tar.gz
@@ -35,7 +35,7 @@ mkdir $blacksmithInstallFolder
 cd $blacksmithInstallFolder
 
 echo ----- STEP 2: DOWNLOAD CLI FROM GITHUB
-#https://github.com/synthphonic/blacksmith-cli/archive/refs/tags/v0.x/v0.5.0-alpha.tar.gz
+#https://github.com/blacksmithdata/blacksmith-cli/archive/refs/tags/v0.x/v0.5.0-alpha.tar.gz
 curl -L $fullUrl | tar xz
 
 echo ----- STEP 3: MAKE FLAT FOLDER
