@@ -1,1 +1,2 @@
-# blacksmith-cli
+# blacksmith
+blacksmith cli test
