@@ -11,7 +11,7 @@
 #  exit 1
 #fi
 
-latestVersion=0.6.0-alpha
+latestVersion=0.6.1-alpha
 tag=0.x
 localAppFolder=/usr/local
 blacksmithAppBin=/usr/local/bin/blacksmith-cli
