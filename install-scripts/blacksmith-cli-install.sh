@@ -11,7 +11,7 @@
 #  exit 1
 #fi
 
-latestVersion=0.6.1-alpha
+latestVersion=0.6.2-alpha
 tag=0.x
 localAppFolder=/usr/local
 blacksmithAppBin=/usr/local/bin/blacksmith-cli
@@ -54,6 +54,7 @@ mv $blacksmithAppFolder $localAppFolder"/"blacksmith"-"bak
 
 echo ----- STEP 7: COPY 'blacksmith-cli' FOLDER TO '/usr/local/blacksmith-cli'
 mv $blacksmithInstallFolder"/"blacksmith $blacksmithAppFolder
+rm -rf $blacksmithInstallFolder"/"
 
 echo ----- STEP 8: REAPPLY SYMLINK
 rm $blacksmithAppBin
