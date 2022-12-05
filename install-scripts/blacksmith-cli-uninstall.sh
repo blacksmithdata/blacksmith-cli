@@ -14,4 +14,5 @@ rm -rf $localAppFolder"/"blacksmith"-"bak"/"
 rm -rf $localAppFolder"/"blacksmith"/"
 
 echo
-echo Uninstall competed
+echo Uninstall completed.
+echo

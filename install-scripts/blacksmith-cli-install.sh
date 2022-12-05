@@ -1,65 +1,61 @@
 #!/bin/sh
 
-#if [ $# -eq 0 ]
-#then
-#  echo 
-#  echo "Supply the Blacksmith CLI version to install"
-#  echo
-#  echo "e.g: ./blacksmith-cli-install.sh 0.1.0-alpha"
-#  echo
-#  echo	
-#  exit 1
-#fi
+#  sudo curl -s https://raw.githubusercontent.com/blacksmithdata/blacksmith-cli/master/install-scripts/blacksmith-cli-install.sh | sudo bash -s 0.6.1-alpha
+#  sudo curl -s https://raw.githubusercontent.com/blacksmithdata/blacksmith-cli/master/install-scripts/blacksmith-cli-uninstall.sh | sudo bash
 
-latestVersion=0.6.2-alpha
-tag=0.x
+if [ $# -eq 0 ]
+then
+  echo 
+  echo "Supply the Blacksmith CLI version to install"
+  echo
+  echo "e.g: v0.6.5-alpha"
+  echo
+  exit 1	
+fi
+
+toInstallVersion=$1
+echo Installing $toInstallVersion...
+
 localAppFolder=/usr/local
 blacksmithAppBin=/usr/local/bin/blacksmith-cli
 blacksmithAppFolder=/usr/local/blacksmith
-urlTag=v$tag
-url=https://github.com/blacksmithdata/blacksmith-cli/archive/refs/tags/$urlTag
-platform=osx-x64
-downloadFolder=~/Downloads
-fullUrl=$url"/"v$latestVersion.tar.gz
-blacksmithInstallFolder=$downloadFolder"/"blacksmith-cli-install-temp
-downloadedRootFolder=$blacksmithInstallFolder"/"blacksmith-cli-$tag-v$latestVersion
-platformFolder=$downloadedRootFolder"/"$platform
-publicFolder=$downloadedRootFolder"/"$platform"/"$latestVersion"/"public
 
+url=https://github.com/blacksmithdata/blacksmith-cli/releases/download/$toInstallVersion/$toInstallVersion.tar.gz
+blacksmithInstallFolder=~/Downloads//blacksmith-cli-install-temp
 
-echo ----- BEGIN STEPS....
+echo ----- BEGIN INSTALLATION ....
 
-echo ----- STEP 1: CLEANUP INSTALL INSTALL FOLDER
+echo
+echo ----- STEP 1: CLEANUP INSTALL FOLDER
 rm -rf $blacksmithInstallFolder
 mkdir $blacksmithInstallFolder
 cd $blacksmithInstallFolder
 
-echo ----- STEP 2: DOWNLOAD CLI FROM GITHUB
-#https://github.com/blacksmithdata/blacksmith-cli/archive/refs/tags/v0.x/v0.5.0-alpha.tar.gz
-curl -L $fullUrl | tar xz
+echo
+echo ----- STEP 2: DOWNLOAD BLACKSMITH CLI
+curl -L $url | tar xz
 
-echo ----- STEP 3: MAKE FLAT FOLDER
-mv "/"$publicFolder"/"* $blacksmithInstallFolder"/"*
+echo
+echo ----- STEP 3: PROCESS FOLDER STRUCTURE
+mv $toInstallVersion blacksmith
 
-echo ----- STEP 4: DELETE TEMP FOLDERS AND FILES
-rm -rf $platformFolder"/"
-rm $downloadedRootFolder"/"*.md
+echo
+echo ----- STEP 4: PREPARE CLI DESTINATION FOLDER
+mv $blacksmithAppFolder /usr/local/blacksmith-old
+mv blacksmith $blacksmithAppFolder
 
-echo ----- STEP 5: RENAME ROOT FOLDER
-mv $downloadedRootFolder $blacksmithInstallFolder"/"blacksmith
+echo
+echo ----- STEP 5: DELETE CACHE FOLDER
+rm -rf /usr/local/blacksmith-old
+cd ~/
+rm -rf blacksmithInstallFolder/
 
-echo ----- STEP 6: BACKUP '/usr/local/blacksmith-cli' to '/usr/local/blacksmith-cli-bak'
-rm -rf $localAppFolder"/"blacksmith"-"bak"/"
-mv $blacksmithAppFolder $localAppFolder"/"blacksmith"-"bak
-
-echo ----- STEP 7: COPY 'blacksmith-cli' FOLDER TO '/usr/local/blacksmith-cli'
-mv $blacksmithInstallFolder"/"blacksmith $blacksmithAppFolder
-rm -rf $blacksmithInstallFolder"/"
-
-echo ----- STEP 8: REAPPLY SYMLINK
+echo
+echo ----- STEP 6: APPLY SYMLINK
 rm $blacksmithAppBin
 ln -s $blacksmithAppFolder"/"blacksmith-cli $blacksmithAppBin
 
 echo
-echo Install competed
-echo Close your terminal or create a new one to ensure the cli works
+echo
+echo Install completed. To get started, type blacksmith-cli
+echo
