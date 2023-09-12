@@ -38,7 +38,7 @@ curl -L $url | tar xz
 
 echo
 echo ----- STEP 3: PROCESS FOLDER STRUCTURE
-mv $toInstallVersion blacksmith
+mv $toInstallVersion-$platform blacksmith
 
 echo
 echo ----- STEP 4: PREPARE CLI DESTINATION FOLDER
