@@ -38,6 +38,7 @@ curl -L $url | tar xz
 
 echo
 echo ----- STEP 3: PROCESS FOLDER STRUCTURE
+echo THE FOLDER $toInstallVersion-$platform
 mv $toInstallVersion-$platform blacksmith
 
 echo
