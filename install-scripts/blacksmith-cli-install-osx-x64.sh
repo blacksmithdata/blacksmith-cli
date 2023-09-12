@@ -16,11 +16,12 @@ fi
 toInstallVersion=$1
 echo Installing $toInstallVersion...
 
+platform=osx-x64
 localAppFolder=/usr/local
 blacksmithAppBin=/usr/local/bin/blacksmith-cli
 blacksmithAppFolder=/usr/local/blacksmith
 
-url=https://github.com/blacksmithdata/blacksmith-cli/releases/download/$toInstallVersion/$toInstallVersion.tar.gz
+url=https://github.com/blacksmithdata/blacksmith-cli/releases/download/$toInstallVersion/$toInstallVersion-$platform.tar.gz
 blacksmithInstallFolder=~/Downloads//blacksmith-cli-install-temp
 
 echo ----- BEGIN INSTALLATION ....
