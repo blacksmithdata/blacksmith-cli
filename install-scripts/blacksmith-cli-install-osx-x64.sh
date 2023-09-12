@@ -30,7 +30,7 @@ echo
 echo ----- STEP 1: CLEANUP INSTALL FOLDER
 rm -rf $blacksmithInstallFolder
 mkdir $blacksmithInstallFolder
-cd $blacksmithInstallFolder-$platform
+cd $blacksmithInstallFolder
 
 echo
 echo ----- STEP 2: DOWNLOAD BLACKSMITH CLI
