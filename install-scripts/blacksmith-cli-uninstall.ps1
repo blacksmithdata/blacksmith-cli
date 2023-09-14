@@ -1,28 +1,21 @@
-# Define variables
-$localAppFolder = "C:\Program Files\blacksmith" # You can change this to your desired installation folder
-$blacksmithAppBin = "C:\Program Files\blacksmith\blacksmith-cli.exe" # You can change this to the actual path to the executable
-$blacksmithAppFolder = "C:\Program Files\blacksmith" # You can change this to your desired installation folder
+# Set variables
+$localAppFolder = "/usr/local"
+$blacksmithAppBin = "/usr/local/bin/blacksmith-cli"
+$blacksmithAppFolder = "/usr/local/blacksmith"
 
-# Display the beginning of the steps
+# Output beginning message
 Write-Host "----- BEGIN STEPS...."
 
-# STEP 1: DELETE SYMLINK
-if (Test-Path $blacksmithAppBin) {
-    Remove-Item $blacksmithAppBin -Force
-    Write-Host "----- STEP 1: Deleted symlink"
-} else {
-    Write-Host "----- STEP 1: Symlink not found, skipping deletion"
-}
+# Step 1: Delete symlink
+Write-Host "----- STEP 1: DELETE SYMLINK"
+Remove-Item -Path $blacksmithAppBin -Force
 
-# STEP 2: DELETE LOCAL APP FOLDER
-if (Test-Path $localAppFolder) {
-    Remove-Item $localAppFolder -Recurse -Force
-    Write-Host "----- STEP 2: Deleted local app folder"
-} else {
-    Write-Host "----- STEP 2: Local app folder not found, skipping deletion"
-}
+# Step 2: Delete local app folders
+Write-Host "----- STEP 2: DELETE LOCAL APP FOLDER"
+Remove-Item -Path "$localAppFolder/blacksmith-bak" -Recurse -Force
+Remove-Item -Path "$localAppFolder/blacksmith" -Recurse -Force
 
-# Display completion message
+# Output completion message
 Write-Host ""
 Write-Host "Uninstall completed."
 Write-Host ""
