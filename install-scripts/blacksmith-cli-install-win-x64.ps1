@@ -16,7 +16,7 @@ $localAppFolder = "C:\Program Files\Blacksmith"
 $blacksmithAppBin = Join-Path -Path $localAppFolder -ChildPath "blacksmith-cli"
 $blacksmithAppFolder = Join-Path -Path $localAppFolder -ChildPath "blacksmith"
 
-$url = "https://github.com/blacksmithdata/blacksmith-cli/releases/download/$toInstallVersion/$toInstallVersion-$platform.tar.gz"
+$url = "https://github.com/blacksmithdata/blacksmith-cli/releases/download/$toInstallVersion/$toInstallVersion-$platform.zip"
 $blacksmithInstallFolder = Join-Path -Path $env:USERPROFILE -ChildPath "Downloads\blacksmith-cli-install-temp"
 
 Write-Host "----- BEGIN INSTALLATION ...."
@@ -29,8 +29,8 @@ Set-Location -Path $blacksmithInstallFolder
 
 Write-Host ""
 Write-Host "----- STEP 2: DOWNLOAD BLACKSMITH CLI"
-Invoke-WebRequest -Uri $url -OutFile "$toInstallVersion-$platform.tar.gz"
-Expand-Archive -Path "$toInstallVersion-$platform.tar.gz"
+Invoke-WebRequest -Uri $url -OutFile "$toInstallVersion-$platform.zip"
+Expand-Archive -Path "$toInstallVersion-$platform.zip"
 
 Write-Host ""
 Write-Host "----- STEP 3: PROCESS FOLDER STRUCTURE"
