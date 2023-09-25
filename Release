@@ -1,1 +1,2 @@
-deb [trusted=yes] file:///root/repos/blacksmith-cli/ deb/
+deb [trusted=yes] https://github.com/blacksmithdata/blacksmith-cli/ deb/
+# deb [trusted=yes] file:///root/repos/blacksmith-cli/ deb/
